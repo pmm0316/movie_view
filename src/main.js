@@ -5,8 +5,8 @@ import App from './App'
 import router from './router'
 import VueCookie from 'vue-cookie'
 import iView from 'iview'
-import './global_components'
-import 'iview/dist/styles/iview.css'
+import './global_components' // 引入全局组件
+import 'iview/dist/styles/iview.css' // 引入iView样式
 
 Vue.config.productionTip = false
 Vue.use(iView)
