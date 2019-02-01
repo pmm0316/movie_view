@@ -1,10 +1,9 @@
 <template>
   <Carousel v-model="picValue" loop>
-    <CarouselItem>
-      <div class="demo-carousel">1</div>
-    </CarouselItem>
-    <CarouselItem>
-      <div class="demo-carousel">2</div>
+    <CarouselItem v-for="item of list" :key="item._id">
+      <div class="demo-carousel">
+        <img :src="item.recommendSrc" :alt="item.recommendTitle"/>
+      </div>
     </CarouselItem>
   </Carousel>
 </template>
@@ -12,6 +11,11 @@
 <script>
   export default {
     name: 'IndexHeaderPic',
+    props: {
+      list: {
+        type: Array
+      }
+    },
     data () {
       return {
         picValue: 0
@@ -22,7 +26,10 @@
 
 <style scoped lang="less">
   .demo-carousel {
-    height: 300px;
-    background-color: #42b983;
+    // background-color: #42b983;
+    background-color: #fff;
+    img {
+      height: 300px;
+    }
   }
 </style>

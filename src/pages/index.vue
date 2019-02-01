@@ -7,7 +7,7 @@
         <user-message/>
       </div>
       <div class="contentPic">
-        <index-header-pic/>
+        <index-header-pic :list="recommendsList"/>
       </div>
       <div class="contentMain">
         <div>
@@ -28,10 +28,12 @@
 </template>
 
 <script>
+  import * as API from '../api'
   import UserMessage from '../components/UserMessage'
   import IndexHeaderPic from '../components/IndexHeaderPic'
   import MoviesList from '../components/MoviesList'
   import NewsList from '../components/NewsList'
+
   export default {
     name: 'index',
     components: {
@@ -39,6 +41,16 @@
       IndexHeaderPic,
       MoviesList,
       NewsList
+    },
+    data () {
+      return {
+        recommendsList: []
+      }
+    },
+    created () {
+      API.getRecommend().then(res => {
+        this.recommendsList = res.data
+      })
     }
   }
 </script>
@@ -47,6 +59,10 @@
   .container {
     padding: 0;
     margin: 0 auto;
+    .contentPic {
+      width: 900px;
+      margin: 0 auto;
+    }
     .contentMain {
       height: 50px;
       .item {

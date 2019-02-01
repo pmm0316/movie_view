@@ -27,3 +27,11 @@ export function register (params) {
     data: params
   })
 }
+
+// 得到主页推荐
+export function getRecommend () {
+  return request({
+    url: requestUrl('/showIndex'),
+    method: 'get'
+  })
+}
