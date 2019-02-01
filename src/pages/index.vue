@@ -13,7 +13,10 @@
         <div>
           <div class="item content-left">
             <ul class="cont-ul">
-              <movies-list/>
+              <movies-list v-for="item of movieRanking"
+                           :key="item._id" :id="item._id"
+                           :movieTime="item.movieTime"
+                           :movieName="item.movieName"/>
             </ul>
           </div>
           <div class="item content-right">
@@ -44,12 +47,16 @@
     },
     data () {
       return {
-        recommendsList: []
+        recommendsList: [],
+        movieRanking: []
       }
     },
     created () {
       API.getRecommend().then(res => {
         this.recommendsList = res.data
+      })
+      API.getMovieRanking().then(res => {
+        this.movieRanking = res.data
       })
     }
   }

@@ -1,8 +1,8 @@
 <template>
     <div class="movieList">
       <div>
-        <router-link to="dianyingluyou" class="goods-list-link">
-          电影名称
+        <router-link :to="{path: '/movieDetail', query: {id: id}}" class="goods-list-link">
+          {{movieName}}, {{movieTime}}
         </router-link>
       </div>
     </div>
@@ -10,7 +10,8 @@
 
 <script>
   export default {
-    name: 'MoviesList'
+    name: 'MoviesList',
+    props: ['id', 'movieName', 'movieTime']
   }
 </script>
 

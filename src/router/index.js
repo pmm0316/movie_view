@@ -5,6 +5,7 @@ import LoginPage from '../pages/loginPage'
 import RegisterPage from '../pages/registerPage'
 import FindPassword from '../pages/findPassword'
 import UserInfo from '../pages/userInfo'
+import MovieDetail from '../pages/movieDetail'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const routes = [
     path: '/userInfo',
     name: 'UserInfo',
     component: UserInfo
+  },
+  {
+    path: '/movieDetail',
+    name: 'MovieDetail',
+    component: MovieDetail
   }
 ]
 

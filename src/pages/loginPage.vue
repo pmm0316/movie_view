@@ -25,7 +25,7 @@
 
 <script>
   import * as API from '../api'
-  // import axios from 'axios'
+  import {mapMutations} from 'vuex'
   export default {
     name: 'loginPage',
     data () {
@@ -53,6 +53,7 @@
               if (res && res.status === 0) {
                 let data = res.data
                 this.$cookie.set('token', data.token)
+                this.setUser(data)
                 localStorage.setItem('user_id', data.user._id)
                 localStorage.setItem('username', data.user.username)
                 this.$router.replace({ name: 'home' })
@@ -65,7 +66,10 @@
             this.$Message.error('Fail!')
           }
         })
-      }
+      },
+      ...mapMutations({
+        setUser: 'setUser'
+      })
     }
   }
 </script>

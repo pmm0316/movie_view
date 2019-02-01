@@ -35,3 +35,20 @@ export function getRecommend () {
     method: 'get'
   })
 }
+
+// 得到电影列表
+export function getMovieRanking () {
+  return request({
+    url: requestUrl('/showRanking'),
+    method: 'get'
+  })
+}
+
+// 得到电影详情
+export function getMovieDetial (params) {
+  return request({
+    url: requestUrl('/movie/detail'),
+    method: 'post',
+    data: params
+  })
+}

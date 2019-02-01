@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueCookie from 'vue-cookie'
+import store from './store'
 import iView from 'iview'
 import './global_components' // 引入全局组件
 import 'iview/dist/styles/iview.css' // 引入iView样式
@@ -16,6 +17,7 @@ Vue.use(VueCookie)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -9,13 +9,16 @@ import MovieIndexHeader from './components/MovieIndexHeader'
 import UserMessage from './components/UserMessage'
 import CommonFooter from './components/CommonFooter'
 import CenterContainer from './components/CenterContainer'
+import Comment from './components/Comment'
 
 Vue.component('MovieIndexHeader', MovieIndexHeader)
 Vue.component('CommonFooter', CommonFooter)
 Vue.component('CenterContainer', CenterContainer)
 Vue.component('UserMessage', UserMessage)
+Vue.component('Comment', Comment)
 
 Vue.use(MovieIndexHeader)
 Vue.use(CommonFooter)
 Vue.use(CenterContainer)
 Vue.use(UserMessage)
+Vue.use(Comment)
