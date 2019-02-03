@@ -26,7 +26,10 @@ const routes = [
   {
     path: '/loginPage',
     name: 'LoginPage',
-    component: LoginPage
+    component: LoginPage,
+    meta: {
+      guest: true
+    }
   },
   {
     path: '/registerPage',
@@ -50,7 +53,19 @@ const routes = [
   }
 ]
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  let token = Vue.cookie.get('token')
+  console.log(token)
+  if (!token && !to.meta.guest) {
+    next({name: 'LoginPage'})
+    return
+  }
+  next()
+})
+
+export default router

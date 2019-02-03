@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <!--<div class="container">
     <Form ref="formValidate"
           :model="registerInfo"
           class="register-wrapper"
@@ -24,7 +24,45 @@
         <Button type="primary" @click="handleRegister('formValidate')">注册</Button>
       </FormItem>
     </Form>
-  </div>
+  </div>-->
+  <center-container
+    form-position="right"
+    title="注册用户">
+    <template slot="bg-img">
+      <div class="img-wrapper">
+        <img src="../assets/images/register.jpg" alt="1">
+      </div>
+    </template>
+    <template slot="form">
+      <Form ref="formValidate"
+            :model="registerInfo"
+            class="register-wrapper"
+            :rules="ruleValidate"
+            :label-width="80">
+        <FormItem label="用户名" prop="username">
+          <Input v-model="registerInfo.username" placeholder="Enter your username"/>
+        </FormItem>
+        <FormItem label="密码" prop="password">
+          <Input v-model="registerInfo.password" placeholder="Enter your password"/>
+        </FormItem>
+        <FormItem label="重复密码" prop="repassword">
+          <Input v-model="registerInfo.repassword" placeholder="Enter your repassword"/>
+        </FormItem>
+        <FormItem label="邮箱" prop="userMail">
+          <Input v-model="registerInfo.userMail" placeholder="Enter your mail"/>
+        </FormItem>
+        <FormItem label="手机" prop="userPhone">
+          <Input v-model="registerInfo.userPhone" placeholder="Enter your phone"/>
+        </FormItem>
+        <FormItem>
+          <Button type="primary" @click="handleRegister('formValidate')">注册</Button>
+        </FormItem>
+        <FormItem>
+          <router-link :to="{name: 'LoginPage'}">已注册，返回登录页面</router-link>
+        </FormItem>
+      </Form>
+    </template>
+  </center-container>
 </template>
 
 <script>
@@ -83,14 +121,7 @@
 </script>
 
 <style scoped lang="less">
-  .container {
-    display: flex;
-    height: calc(100vh);
-    justify-content: center;
-    align-items: center;
-    .register-wrapper {
-      width: 350px;
-      height: 400px;
-    }
+  .ivu-form-item > :first-child {
+    color: #fff;
   }
 </style>
