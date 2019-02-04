@@ -55,7 +55,7 @@
           <Input v-model="registerInfo.userPhone" placeholder="Enter your phone"/>
         </FormItem>
         <FormItem>
-          <Button type="primary" @click="handleRegister('formValidate')">注册</Button>
+          <Button type="primary" @click="handleRegister('formValidate')" long>注册</Button>
         </FormItem>
         <FormItem>
           <router-link :to="{name: 'LoginPage'}">已注册，返回登录页面</router-link>

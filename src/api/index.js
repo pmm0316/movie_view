@@ -27,6 +27,14 @@ export function register (params) {
     data: params
   })
 }
+// 找回密码
+export function findPasswrod (params) {
+  return request({
+    url: requestUrl('/users/findPassword'),
+    method: 'post',
+    data: params
+  })
+}
 
 // 得到主页推荐
 export function getRecommend () {

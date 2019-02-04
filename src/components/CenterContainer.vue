@@ -2,7 +2,7 @@
   <div class="container">
     <slot name="bg-img"/>
     <div class="form-wrapper" :class="formPosition">
-      <div class="title">{{title}}</div>
+      <div class="title" :style="{color: titleColor}">{{title}}</div>
       <slot name="form"/>
     </div>
   </div>
@@ -17,6 +17,10 @@
       },
       formPosition: {
         default: 'center',
+        type: String
+      },
+      titleColor: {
+        default: '#fff',
         type: String
       }
     },
@@ -58,7 +62,7 @@
       left: 50%;
     }
     .left {
-      left: 30%;
+      left: 25%;
     }
     .right {
       left: 80%;

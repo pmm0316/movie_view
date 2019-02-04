@@ -34,12 +34,18 @@ const routes = [
   {
     path: '/registerPage',
     name: 'RegisterPage',
-    component: RegisterPage
+    component: RegisterPage,
+    meta: {
+      guest: true
+    }
   },
   {
     path: '/findPassword',
     name: 'FindPassword',
-    component: FindPassword
+    component: FindPassword,
+    meta: {
+      guest: true
+    }
   },
   {
     path: '/userInfo',
@@ -61,6 +67,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   let token = Vue.cookie.get('token')
   console.log(token)
+  console.log(to)
   if (!token && !to.meta.guest) {
     next({name: 'LoginPage'})
     return
