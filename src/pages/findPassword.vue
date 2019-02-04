@@ -59,6 +59,9 @@
         <FormItem>
           <Button type="primary" @click="checkUser('formValidate1')" long>校验用户</Button>
         </FormItem>
+        <FormItem>
+          <router-link to="/loginPage">返回登录</router-link>
+        </FormItem>
       </Form>
       <Form ref="formValidate2"
             v-show="showRePassword"

@@ -1,12 +1,13 @@
 <template>
     <div class="header">
-      <router-link to="/loginPage" v-if="!userId">
-        <div class="header_menu">登录</div>
-      </router-link>
-      <div v-else class="header_menu logout">
-        <span class="name">{{username}}</span>
+      <div v-if="!isLogin">
         <router-link to="/loginPage">
-          <div @click="logout">退出</div>
+          <div class="header_menu">登录</div>
+        </router-link>
+      </div>
+      <div v-else class="header_menu logout">
+        <router-link :to="{path: '/userInfo', query: {id: userId}}">
+          <div class="text">已登录：{{username}}</div>
         </router-link>
       </div>
     </div>
@@ -17,6 +18,7 @@
     name: 'UserMessage',
     data () {
       return {
+        isLogin: false,
         userId: null,
         username: null
       }
@@ -29,8 +31,14 @@
       }
     },
     created () {
-      this.userId = localStorage.getItem('user_id')
-      this.username = localStorage.getItem('username')
+      let token = this.$cookie.get('token')
+      if (token) {
+        this.isLogin = true
+        this.userId = localStorage.getItem('user_id')
+        this.username = localStorage.getItem('username')
+      } else {
+        console.log('登录失败')
+      }
     }
   }
 </script>
@@ -52,7 +60,7 @@
     }
     .logout {
       display: flex;
-      .name {
+      .text {
         margin-right: 15px;
         line-height: 15px;
       }

@@ -7,10 +7,10 @@
         <user-message/>
       </div>
       <div>
-        <div>用户名:用户</div>
-        <div>用户邮箱：邮箱</div>
-        <div>用户电话：电话</div>
-        <div>用户状态：用户状态(封停与否)</div>
+        <div>用户名:{{user.username}}</div>
+        <div>用户邮箱：{{user.userMail}}</div>
+        <div>用户电话：{{user.userPhone}}</div>
+        <div>用户状态：{{user.userStop}}</div>
         <div><Button @click="updatePassword">修改密码</Button></div>
       </div>
       <div v-show="updatePasswordShow">
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import * as API from '../api'
   export default {
     name: 'userInfo',
     data () {
@@ -52,6 +53,7 @@
         callback()
       }
       return {
+        user: {},
         updatePasswordShow: false,
         formData: {
           password: '',
@@ -74,7 +76,20 @@
     methods: {
       updatePassword () {
         this.updatePasswordShow = !this.updatePasswordShow
+      },
+      getUser () {
+        let userId = this.$route.query.id
+        API.getUserById({user_id: userId}).then(res => {
+          if (res.status === 0) {
+            this.user = res.data
+          } else {
+            console.log('用户详情出错')
+          }
+        })
       }
+    },
+    created () {
+      this.getUser()
     }
   }
 </script>

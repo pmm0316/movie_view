@@ -36,6 +36,15 @@ export function findPasswrod (params) {
   })
 }
 
+// 找回密码
+export function getUserById (params) {
+  return request({
+    url: requestUrl('/users/showUser'),
+    method: 'post',
+    data: params
+  })
+}
+
 // 得到主页推荐
 export function getRecommend () {
   return request({
