@@ -7,7 +7,7 @@
         <user-message/>
       </div>
       <div>
-        <div>用户名:{{user.username}}</div>
+        <div>用户名: {{user.username}}</div>
         <div>用户邮箱：{{user.userMail}}</div>
         <div>用户电话：{{user.userPhone}}</div>
         <div>用户状态：{{user.userStop}}</div>
